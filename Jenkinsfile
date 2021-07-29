@@ -1,3 +1,6 @@
+def Image = "docs"
+def Build_tag = "0.1"
+
 pipeline {
     agent any
       environment{

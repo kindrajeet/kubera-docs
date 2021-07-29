@@ -5,7 +5,7 @@ echo "*************************************"
 echo "************Push-Images**************"
 echo "*************************************"
 
-Image="docs"
+#Image="docs"
 
 echo "**********Logggin*******************"
 docker login -u indraindrajit71 -p $pass

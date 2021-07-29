@@ -10,16 +10,20 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
-		sh '''
-		 ./jenkins/build/build.sh
-		    '''
+                sh 'echo "Pushing"'
+                    sh '''
+                        docker login -u indraindrajit71 -p $pass
+                        echo "taggingImages"
+                        docker tag $Image:$Build_tag indraindrajit71/$Image:$Build_tag
+                        echo "PushingImages"
+                        docker push indraindrajit71/$Image:$Build_tag
+                        '''
             }
         }
         stage('Push') {
             steps {
 		sh '''
-		./jenkins/push/push.sh
+		
 		   '''
             }
         }

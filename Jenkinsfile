@@ -1,6 +1,7 @@
 def Image = "docs"
 def Build_tag = "0.1"
 
+
 pipeline {
     agent any
       environment{
@@ -10,20 +11,18 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'echo "Pushing"'
-                    sh '''
-                        docker login -u indraindrajit71 -p "$pass"
-                        echo "taggingImages"
-                        docker tag ${Image}:${Build_tag} indraindrajit71/${Image}:${Build_tag}
-                        echo "PushingImages"
-                        docker push indraindrajit71/${Image}:${Build_tag}
-                        '''
+                echo 'Building..'
+		sh '''
+		 ./jenkins/build/build.sh
+		    '''
             }
         }
         stage('Push') {
             steps {
 		sh '''
-		
+		   docker login -u indraindrajit71 -p $pass
+           docker tag ${Image}:${Build_tag} indraindrajit71/${Image}:${Build_tag}
+           docker push indraindrajit71/${Image}:${Build_tag}
 		   '''
             }
         }

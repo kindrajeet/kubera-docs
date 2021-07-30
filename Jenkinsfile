@@ -1,5 +1,5 @@
-def Image = "docs"
-def Build_tag = "0.1"
+def IMAGE = "docs"
+def BUILD_TAG = "0.1"
 
 
 pipeline {
@@ -12,18 +12,18 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-		sh '''
+		sh """
 		 ./jenkins/build/build.sh
-		    '''
+		    """
             }
         }
         stage('Push') {
             steps {
-		sh '''
+		sh """
 		   docker login -u indraindrajit71 -p $pass
            	   docker tag ${env.Image}:${env.Build_tag} indraindrajit71/${env.Image}:${env.Build_tag}
            	   docker push indraindrajit71/${env.Image}:${env.Build_tag}
-		   '''
+		   """
             }
         }
         stage('Deploy') {

@@ -1,9 +1,16 @@
 def IMAGE = "docs"
 def BUILD_TAG = "0.1"
+def REPO = "kubera-docs"
+def BRANCH_NAME = BRANCH_NAME.toLowerCase()
 
 
 pipeline {
-    agent any
+    agent {
+        label {
+            label ""
+            customWorkspace "/var/lib/jenkins/workspace/${REPO}-${BRANCH_NAME}"
+        }
+    }
       environment{
        pass = credentials('registry-pass')
    }
@@ -19,17 +26,18 @@ pipeline {
         }
         stage('Push') {
             steps {
-		sh """
-		   docker login -u indraindrajit71 -p $pass
-           	   docker tag ${IMAGE}:${BUILD_TAG} indraindrajit71/${IMAGE}:${BUILD_TAG}
-           	   docker push indraindrajit71/${IMAGE}:${BUILD_TAG}
-		   """
+              script {
+                  if (env.BRANCH_NAME == 'staging') {
+                     sh  "docker login -u indraindrajit71 -p $pass"
+                     sh  "docker tag ${IMAGE}:${BUILD_TAG} indraindrajit71/${IMAGE}:${BRANCH_NAME}-${BUILD_TAG}"
+                  } else if (env.BRANCH_NAME == 'staging-new'){
+                     sh  "docker login -u indraindrajit71 -p $pass"
+                     sh  "docker tag ${IMAGE}:${BUILD_TAG} indraindrajit71/${IMAGE}:${BRANCH_NAME}-${BUILD_TAG}"
+                      }
+                  }
+              }
+
             }
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
+
     }
-}

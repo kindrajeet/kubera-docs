@@ -21,8 +21,8 @@ pipeline {
             steps {
 		sh """
 		   docker login -u indraindrajit71 -p $pass
-           	   docker tag ${env.Image}:${env.Build_tag} indraindrajit71/${env.Image}:${env.Build_tag}
-           	   docker push indraindrajit71/${env.Image}:${env.Build_tag}
+           	   docker tag ${Image}:${Build_tag} indraindrajit71/${Image}:${Build_tag}
+           	   docker push indraindrajit71/${Image}:${Build_tag}
 		   """
             }
         }

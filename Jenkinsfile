@@ -1,7 +1,7 @@
 def IMAGE = "indraindrajit71/docs"
 def REPO = "kubera-docs"
 def BRANCH_NAME = BRANCH_NAME.toLowerCase()
-def GIT_SHA = "sh(returnsStdout: true,script: git log -n 1 --pretty='%h')"
+def GIT_SHA = "sh(git log -n 1 --pretty='%h')"
 
 
 pipeline {

@@ -1,5 +1,5 @@
 def IMAGE = "docs"
-/* def BUILD_TAG = "0.1" */
+def BUILD_TAG = "0.1"
 def REPO = "kubera-docs"
 def BRANCH_NAME = BRANCH_NAME.toLowerCase()
 

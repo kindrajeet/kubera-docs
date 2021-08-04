@@ -33,11 +33,11 @@ pipeline {
                   if (env.BRANCH_NAME == 'staging') {
                      sh  "docker login -u indraindrajit71 -p $pass"
                      /* sh  "docker tag ${IMAGE}:${BUILD_NUMBER} indraindrajit71/${IMAGE}:${BRANCH_NAME}-${BUILD_NUMBER}" */
-                     sh  "docker push ${IMAGE}:${BRANCH_NAME}-${GIT_SHA}"
+                     sh  "docker push ${IMAGE}:${BRANCH_NAME}-${env.GIT_SHA}"
                   } else if (env.BRANCH_NAME == 'staging-new'){
                      sh  "docker login -u indraindrajit71 -p $pass"
                      /* sh  "docker tag ${IMAGE}:${BUILD_NUMBER} indraindrajit71/${IMAGE}:${BRANCH_NAME}-${BUILD_NUMBER}" */
-                     sh  "docker push ${IMAGE}:${BRANCH_NAME}-${GIT_SHA}"
+                     sh  "docker push ${IMAGE}:${BRANCH_NAME}-${env.GIT_SHA}"
                       }
                   }
               }

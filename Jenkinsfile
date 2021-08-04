@@ -28,7 +28,7 @@ pipeline {
             steps {
               script {
                   GIT_SHA = sh(
-                      returnsStdout: true,
+                      returnStdout: true,
                       script: "git log -n 1 --pretty=format:'%h'"
                   )
                   if (env.BRANCH_NAME == 'staging') {

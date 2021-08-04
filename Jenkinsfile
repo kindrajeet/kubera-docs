@@ -1,8 +1,8 @@
 def IMAGE = "indraindrajit71/docs"
 def REPO = "kubera-docs"
 def BRANCH_NAME = BRANCH_NAME.toLowerCase()
-def GIT_SHA = "sh(git log -n 1 --pretty='%h')"
-
+/* def GIT_SHA = "sh(git log -n 1 --pretty='%h')"
+ */
 
 pipeline {
     agent {
@@ -27,10 +27,10 @@ pipeline {
         stage('Push') {
             steps {
               script {
-                  /* GIT_SHA = sh(
+                  GIT_SHA = sh(
                       returnsStdout: true,
                       script: "git log -n 1 --pretty=format:'%h'"
-                  ) */
+                  )
                   if (env.BRANCH_NAME == 'staging') {
                      sh  "docker login -u indraindrajit71 -p $pass"
                      /* sh  "docker tag ${IMAGE}:${BUILD_NUMBER} indraindrajit71/${IMAGE}:${BRANCH_NAME}-${BUILD_NUMBER}" */

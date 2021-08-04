@@ -29,12 +29,12 @@ pipeline {
               script {
                   if (env.BRANCH_NAME == 'staging') {
                      sh  "docker login -u indraindrajit71 -p $pass"
-                     sh  "docker tag ${IMAGE}:${BUILD_NUMBER} indraindrajit71/${IMAGE}:${BRANCH_NAME}-${BUILD_NUMBER}"
-                     sh  "docker push indraindrajit71/${IMAGE}:${BRANCH_NAME}-${BUILD_NUMBER}"
+                     sh  "docker tag ${IMAGE}:${BUILD_TAG} indraindrajit71/${IMAGE}:${BRANCH_NAME}-${BUILD_TAG}"
+                     sh  "docker push indraindrajit71/${IMAGE}:${BRANCH_TAG}-${BUILD_TAG}"
                   } else if (env.BRANCH_NAME == 'staging-new'){
                      sh  "docker login -u indraindrajit71 -p $pass"
-                     sh  "docker tag ${IMAGE}:${BUILD_NUMBER} indraindrajit71/${IMAGE}:${BRANCH_NAME}-${BUILD_NUMBER}"
-                     sh  "docker push indraindrajit71/${IMAGE}:${BRANCH_NAME}-${BUILD_NUMBER}"
+                     sh  "docker tag ${IMAGE}:${BUILD_NUMBER} indraindrajit71/${IMAGE}:${BRANCH_NAME}-${BUILD_TAG}"
+                     sh  "docker push indraindrajit71/${IMAGE}:${BUILD_TAG}-${BUILD_TAG}"
                       }
                   }
               }

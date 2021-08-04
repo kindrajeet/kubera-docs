@@ -29,7 +29,7 @@ pipeline {
                   GIT_SHA = sh(
                       returnsStdout: true,
                       script: "git log -n 1 --pretty=format:'%h'"
-                  ).trim()
+                  )
                   if (env.BRANCH_NAME == 'staging') {
                      sh  "docker login -u indraindrajit71 -p $pass"
                      /* sh  "docker tag ${IMAGE}:${BUILD_NUMBER} indraindrajit71/${IMAGE}:${BRANCH_NAME}-${BUILD_NUMBER}" */

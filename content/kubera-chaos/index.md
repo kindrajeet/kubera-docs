@@ -21,7 +21,5 @@ versions:
 
 {% link_in_list /chaos-analytics %}
 
-{% link_in_list /managing-teams %}
-
 {% link_in_list /troubleshooting %}
 

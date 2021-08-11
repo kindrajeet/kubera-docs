@@ -8,7 +8,7 @@ pipeline {
     agent {
         label {
             label ""
-            customWorkspace "/media/jenkins/workspace/${REPO}-${BRANCH_NAME}"
+            customWorkspace "/var/lib/jenkins/workspace/${REPO}-${BRANCH_NAME}"
         }
     }
       environment{

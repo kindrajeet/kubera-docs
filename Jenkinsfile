@@ -2,7 +2,6 @@ def IMAGE = "indraindrajit71/docs"
 def REPO = "kubera-docs"
 def BRANCH_NAME = BRANCH_NAME.toLowerCase()
 
-
 pipeline {
     agent {
         label {

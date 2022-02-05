@@ -1,4 +1,5 @@
 ##this change was done on 5thFeb2022##
+##Guys this session was for GitOps
 
 # Contributing to this repository <!-- omit in toc -->
 
